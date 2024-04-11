@@ -1,6 +1,8 @@
 package com.bonifacio.shorty_link.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -21,6 +23,9 @@ public class UserUrl extends Url{
     private String name;
     @Size(max = 500,min = 50)
     private String description;
+    @JoinColumn(name = "user_id")
+    @ManyToOne(targetEntity = User.class)
+    private User user;
 
     public UserUrl(){
         super();
